@@ -1,1 +1,501 @@
-<!-- Coller ici le code HTML complet fourni ci-dessus -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asma Elbach - Étudiante en Télécommunications</title>
+    <meta name="description" content="Portfolio d'Asma Elbach, étudiante en Télécommunications passionnée par la cybersécurité et le développement web.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #93B381 0%, #FFB7CE 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #93B381 0%, #FFB7CE 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(147, 179, 129, 0.1);
+        }
+        
+        .section-padding {
+            padding: 5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-padding {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        /* Animation pour le défilement */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Style pour la navigation mobile */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Style pour les certifications */
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .certification-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .certification-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .certification-content {
+            padding: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-xl font-bold gradient-text">Asma Elbach</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#profil" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300">Profil</a>
+                    <a href="#formation" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300">Formation</a>
+                    <a href="#competences" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300">Compétences</a>
+                    <a href="#certifications" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300">Certifications</a>
+                    <a href="#associatif" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300">Associatif</a>
+                    <a href="#contact" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300">Contact</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50">
+            <div class="p-4 flex justify-between items-center border-b border-gray-200">
+                <span class="text-lg font-bold gradient-text">Menu</span>
+                <button id="close-menu" class="text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="p-4 flex flex-col space-y-4">
+                <a href="#profil" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-2">Profil</a>
+                <a href="#formation" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-2">Formation</a>
+                <a href="#competences" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-2">Compétences</a>
+                <a href="#certifications" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-2">Certifications</a>
+                <a href="#associatif" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-2">Associatif</a>
+                <a href="#contact" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center justify-center gradient-bg text-white pt-16 mobile-padding">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center fade-in">
+            <!-- Profile Photo -->
+            <div class="w-48 h-48 mx-auto mb-8 rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                <img src="images/asma-profile.jpg" alt="Asma Elbach" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">Asma Elbach</h1>
+            <p class="text-xl md:text-2xl text-white mb-8 font-medium">Étudiante en Télécommunications</p>
+            <p class="text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed mb-12">
+                Passionnée par la cybersécurité et le développement web. 
+                Je souhaite développer mes compétences dans ces domaines en participant à des projets concrets.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contact" class="bg-white text-[#93B381] hover:bg-gray-50 px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    📬 Me Contacter
+                </a>
+                <a href="#certifications" class="border border-white text-white hover:bg-white hover:text-[#93B381] px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:-translate-y-1">
+                    🏆 Mes Certifications
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Section -->
+    <section id="profil" class="section-padding bg-white mobile-padding">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">À Mon Sujet</h2>
+            
+            <div class="bg-gray-50 rounded-2xl p-8 card-hover border border-gray-200 fade-in">
+                <div class="flex items-start gap-6">
+                    <div class="text-3xl">👩‍💻</div>
+                    <div>
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            Actuellement en troisième année de licence en télécommunications, je suis passionnée par la cybersécurité 
+                            et le développement web. Je souhaite développer encore plus de compétences dans ces domaines en participant 
+                            à des projets concrets et en découvrant de nouvelles technologies. Avide d'apprentissage, je suis très motivée 
+                            à apprendre dans des projets qui me forment.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-4 py-2 rounded-full font-medium">Cybersécurité</span>
+                            <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-4 py-2 rounded-full font-medium">Développement Web</span>
+                            <span class="bg-[#FFB7CE] bg-opacity-20 text-[#FF69B4] px-4 py-2 rounded-full font-medium">Réseaux</span>
+                            <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-4 py-2 rounded-full font-medium">Apprentissage Continu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation Section -->
+    <section id="formation" class="section-padding bg-gray-50 mobile-padding">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">Formation</h2>
+            
+            <div class="space-y-8">
+                <!-- Current Studies -->
+                <div class="bg-white rounded-2xl p-6 card-hover border border-gray-200 fade-in">
+                    <div class="flex items-start gap-4">
+                        <div class="text-2xl">🎓</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Licence en Télécommunications</h3>
+                            <p class="text-lg text-gray-600 mb-1">Institut Supérieur de l'Informatique et des Technologies de Communication, Hammam Sousse</p>
+                            <p class="text-gray-500">2023 - 2026</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Baccalaureate -->
+                <div class="bg-white rounded-2xl p-6 card-hover border border-gray-200 fade-in">
+                    <div class="flex items-start gap-4">
+                        <div class="text-2xl">📚</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Baccalauréat en Sciences Techniques</h3>
+                            <p class="text-lg text-gray-600 mb-1">Lycée Othman Chatty, M'saken</p>
+                            <p class="text-gray-500">2022 - 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="competences" class="section-padding bg-white mobile-padding">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">Compétences</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Technical Skills -->
+                <div class="bg-gray-50 rounded-2xl p-6 card-hover border border-gray-200 fade-in">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                        <span>💻</span> Compétences Techniques
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">Développement Web</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">HTML</span>
+                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">CSS</span>
+                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">JavaScript</span>
+                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">React.js</span>
+                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">PHP</span>
+                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">MySQL</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">Cybersécurité & Réseaux</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-[#FFB7CE] bg-opacity-20 text-[#FF69B4] px-3 py-1 rounded-full text-sm">Sécurité des Systèmes</span>
+                                <span class="bg-[#FFB7CE] bg-opacity-20 text-[#FF69B4] px-3 py-1 rounded-full text-sm">Modèle OSI</span>
+                                <span class="bg-[#FFB7CE] bg-opacity-20 text-[#FF69B4] px-3 py-1 rounded-full text-sm">TCP/IP</span>
+                                <span class="bg-[#FFB7CE] bg-opacity-20 text-[#FF69B4] px-3 py-1 rounded-full text-sm">Routage</span>
+                                <span class="bg-[#FFB7CE] bg-opacity-20 text-[#FF69B4] px-3 py-1 rounded-full text-sm">Gestion des Menaces</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">Outils</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">Word</span>
+                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">PowerPoint</span>
+                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">Cisco Networking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Skills -->
+                <div class="bg-gray-50 rounded-2xl p-6 card-hover border border-gray-200 fade-in">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                        <span>🌟</span> Compétences Personnelles
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 gap-3">
+                            <div class="flex items-center gap-3">
+                                <span class="text-[#93B381]">•</span>
+                                <span class="text-gray-700">Curieuse et motivée</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-[#93B381]">•</span>
+                                <span class="text-gray-700">Autonome</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-[#93B381]">•</span>
+                                <span class="text-gray-700">Rigueur</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-[#93B381]">•</span>
+                                <span class="text-gray-700">Gestion du stress</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-[#93B381]">•</span>
+                                <span class="text-gray-700">Empathie</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-[#93B381]">•</span>
+                                <span class="text-gray-700">Ouverture d'esprit</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">Langues</h4>
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Arabe</span>
+                                    <span class="text-sm text-gray-500">Langue maternelle</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Français</span>
+                                    <span class="text-sm text-gray-500">Courant</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Anglais</span>
+                                    <span class="text-sm text-gray-500">Intermédiaire</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section-padding bg-gray-50 mobile-padding">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">Certifications</h2>
+            
+            <div class="certification-grid">
+                <!-- Certification 1 - Cyber Threat Management -->
+                <div class="certification-card fade-in">
+                    <div class="bg-gradient-to-r from-[#93B381] to-[#FFB7CE] h-48 flex items-center justify-center">
+                        <span class="text-white text-4xl">🛡️</span>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Cyber Threat Management</h3>
+                        <p class="text-gray-600 mb-2">Cisco Networking Academy - RSI</p>
+                        <p class="text-gray-500 text-sm">26 Janvier 2025</p>
+                        <p class="text-gray-700 mt-3">Formation axée sur la gestion des menaces et la cybersécurité, couvrant les techniques de protection des systèmes.</p>
+                    </div>
+                </div>
+
+                <!-- Certification 2 - JavaScript Essentials -->
+                <div class="certification-card fade-in">
+                    <div class="bg-gradient-to-r from-[#FFB7CE] to-[#93B381] h-48 flex items-center justify-center">
+                        <span class="text-white text-4xl">⚡</span>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">JavaScript Essentials 1</h3>
+                        <p class="text-gray-600 mb-2">Cisco Networking Academy</p>
+                        <p class="text-gray-500 text-sm">26 Janvier 2025</p>
+                        <p class="text-gray-700 mt-3">Certification des fondamentaux du langage JavaScript pour le développement web interactif.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Associatif Section -->
+    <section id="associatif" class="section-padding bg-white mobile-padding">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">Engagement Associatif</h2>
+            
+            <div class="bg-gray-50 rounded-2xl p-8 card-hover border border-gray-200 fade-in">
+                <div class="flex items-start gap-6">
+                    <div class="text-3xl">👥</div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Securinets – Trésorière et membre actif</h3>
+                        <p class="text-gray-600 mb-4">Depuis 2023</p>
+                        <div class="space-y-4">
+                            <div class="bg-white rounded-xl p-4 border border-gray-200">
+                                <h4 class="font-bold text-lg text-gray-800 mb-2">Responsabilités et réalisations :</h4>
+                                <ul class="text-gray-600 space-y-2">
+                                    <li>• Gestion des finances et organisation d'événements liés à la cybersécurité</li>
+                                    <li>• Participation à des formations en cybersécurité pour développer mes compétences pratiques</li>
+                                    <li>• Collaboration avec le bureau pour promouvoir la sécurité informatique au sein du club</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-gray-50 mobile-padding">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">Contact</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Contact Info -->
+                <div class="bg-white rounded-2xl p-6 card-hover border border-gray-200 fade-in">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Coordonnées</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-xl">📍</span>
+                            <span class="text-gray-600">M'saken Sousse, rue El Bohtouri 4070</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xl">📞</span>
+                            <span class="text-gray-600">53 098 851</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xl">📧</span>
+                            <a href="mailto:asmaelbach2@gmail.com" class="text-gray-600 hover:text-[#93B381] transition-colors">
+                                asmaelbach2@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Me -->
+                <div class="bg-white rounded-2xl p-6 card-hover border border-gray-200 fade-in">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Objectif Professionnel</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Je recherche des opportunités pour appliquer mes compétences en cybersécurité et développement web, 
+                        participer à des projets innovants et continuer à développer mes connaissances dans un environnement professionnel.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">Cybersécurité</span>
+                        <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">Développement Web</span>
+                        <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">Réseaux</span>
+                        <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">Apprentissage</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8 mobile-padding">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+            <p class="text-gray-400 text-lg">© 2025 Asma Elbach - Étudiante en Télécommunications</p>
+            <p class="text-gray-500 text-sm mt-2">Passionnée par la cybersécurité et le développement web</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Fermer le menu mobile après avoir cliqué sur un lien
+                    document.getElementById('mobile-menu').classList.remove('open');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.add('open');
+        });
+
+        document.getElementById('close-menu').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.remove('open');
+        });
+
+        // Animation au défilement
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Fermer le menu mobile en cliquant à l'extérieur
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = document.getElementById('mobile-menu-button');
+            
+            if (mobileMenu.classList.contains('open') && 
+                !mobileMenu.contains(event.target) && 
+                !menuButton.contains(event.target)) {
+                mobileMenu.classList.remove('open');
+            }
+        });
+    </script>
+
+</body>
+</html>
