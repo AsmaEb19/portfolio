@@ -31,7 +31,7 @@
         
         .card-hover:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(147, 179, 129, 0.1);
+            box-shadow: 0 20px 40px rgba(147, 179, 129, 0.15);
         }
         
         .section-padding {
@@ -78,40 +78,62 @@
             background: white;
             border-radius: 1rem;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            border: 1px solid #f3f4f6;
         }
         
         .certification-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 25px 50px rgba(147, 179, 129, 0.15);
         }
         
-        .certification-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 3rem;
         }
         
-        .certification-content {
-            padding: 1.5rem;
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #93B381 0%, #FFB7CE 100%);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1.5rem;
+            bottom: -3rem;
+            width: 2px;
+            background: #e5e7eb;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-200">
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
             <div class="flex justify-between items-center">
                 <a href="#" class="text-xl font-bold gradient-text">Asma Elbach</a>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#profil" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300">Profil</a>
-                    <a href="#formation" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300">Formation</a>
-                    <a href="#competences" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300">Compétences</a>
-                    <a href="#certifications" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300">Certifications</a>
-                    <a href="#associatif" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300">Associatif</a>
-                    <a href="#contact" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300">Contact</a>
+                    <a href="#profil" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 font-medium">Profil</a>
+                    <a href="#formation" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 font-medium">Formation</a>
+                    <a href="#experience" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 font-medium">Expérience</a>
+                    <a href="#competences" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 font-medium">Compétences</a>
+                    <a href="#certifications" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 font-medium">Certifications</a>
+                    <a href="#contact" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 font-medium">Contact</a>
                 </div>
                 <button id="mobile-menu-button" class="md:hidden text-gray-600">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,7 +144,7 @@
         </div>
         
         <!-- Menu mobile -->
-        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50">
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-0 right-0 h-full w-64 bg-white shadow-xl z-50">
             <div class="p-4 flex justify-between items-center border-b border-gray-200">
                 <span class="text-lg font-bold gradient-text">Menu</span>
                 <button id="close-menu" class="text-gray-600">
@@ -132,12 +154,12 @@
                 </button>
             </div>
             <div class="p-4 flex flex-col space-y-4">
-                <a href="#profil" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-2">Profil</a>
-                <a href="#formation" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-2">Formation</a>
-                <a href="#competences" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-2">Compétences</a>
-                <a href="#certifications" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-2">Certifications</a>
-                <a href="#associatif" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-2">Associatif</a>
-                <a href="#contact" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-2">Contact</a>
+                <a href="#profil" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-3 font-medium">Profil</a>
+                <a href="#formation" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-3 font-medium">Formation</a>
+                <a href="#experience" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-3 font-medium">Expérience</a>
+                <a href="#competences" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-3 font-medium">Compétences</a>
+                <a href="#certifications" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-3 font-medium">Certifications</a>
+                <a href="#contact" class="text-gray-600 hover:text-[#93B381] transition-colors duration-300 py-3 font-medium">Contact</a>
             </div>
         </div>
     </nav>
@@ -150,17 +172,17 @@
                 <img src="images/asma-profile.jpg" alt="Asma Elbach" class="w-full h-full object-cover">
             </div>
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">Asma Elbach</h1>
-            <p class="text-xl md:text-2xl text-white mb-8 font-medium">Étudiante en Télécommunications</p>
-            <p class="text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed mb-12">
-                Passionnée par la cybersécurité et le développement web. 
-                Je souhaite développer mes compétences dans ces domaines en participant à des projets concrets.
+            <p class="text-xl md:text-2xl text-white/90 mb-8 font-medium">Étudiante en Télécommunications & Passionnée de Cybersécurité</p>
+            <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-12">
+                Développeuse web full-stack et passionnée par la cybersécurité. 
+                Je crée des solutions innovantes tout en renforçant la sécurité des systèmes.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="#contact" class="bg-white text-[#93B381] hover:bg-gray-50 px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     📬 Me Contacter
                 </a>
-                <a href="#certifications" class="border border-white text-white hover:bg-white hover:text-[#93B381] px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:-translate-y-1">
-                    🏆 Mes Certifications
+                <a href="#experience" class="border border-white text-white hover:bg-white hover:text-[#93B381] px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:-translate-y-1">
+                    💼 Voir mon Parcours
                 </a>
             </div>
         </div>
@@ -169,23 +191,27 @@
     <!-- Profile Section -->
     <section id="profil" class="section-padding bg-white mobile-padding">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">À Mon Sujet</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">À Propos de Moi</h2>
             
-            <div class="bg-gray-50 rounded-2xl p-8 card-hover border border-gray-200 fade-in">
-                <div class="flex items-start gap-6">
-                    <div class="text-3xl">👩‍💻</div>
-                    <div>
+            <div class="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 card-hover border border-gray-200 fade-in">
+                <div class="flex flex-col lg:flex-row items-start gap-8">
+                    <div class="flex-shrink-0">
+                        <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-[#93B381] to-[#FFB7CE] flex items-center justify-center">
+                            <span class="text-3xl text-white">👩‍💻</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
                         <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                            Actuellement en troisième année de licence en télécommunications, je suis passionnée par la cybersécurité 
+                            Étudiante en troisième année de licence en télécommunications, je suis passionnée par la cybersécurité 
                             et le développement web. Je souhaite développer encore plus de compétences dans ces domaines en participant 
                             à des projets concrets et en découvrant de nouvelles technologies. Avide d'apprentissage, je suis très motivée 
                             à apprendre dans des projets qui me forment.
                         </p>
                         <div class="flex flex-wrap gap-3">
-                            <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-4 py-2 rounded-full font-medium">Cybersécurité</span>
-                            <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-4 py-2 rounded-full font-medium">Développement Web</span>
-                            <span class="bg-[#FFB7CE] bg-opacity-20 text-[#FF69B4] px-4 py-2 rounded-full font-medium">Réseaux</span>
-                            <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-4 py-2 rounded-full font-medium">Apprentissage Continu</span>
+                            <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-4 py-2 rounded-full font-medium border border-[#93B381] border-opacity-20">Cybersécurité</span>
+                            <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-4 py-2 rounded-full font-medium border border-[#93B381] border-opacity-20">Développement Full-Stack</span>
+                            <span class="bg-[#FFB7CE] bg-opacity-10 text-[#FF69B4] px-4 py-2 rounded-full font-medium border border-[#FFB7CE] border-opacity-20">Gestion de Projet</span>
+                            <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-4 py-2 rounded-full font-medium border border-[#93B381] border-opacity-20">Innovation</span>
                         </div>
                     </div>
                 </div>
@@ -196,29 +222,37 @@
     <!-- Formation Section -->
     <section id="formation" class="section-padding bg-gray-50 mobile-padding">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">Formation</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">Parcours Académique</h2>
             
             <div class="space-y-8">
                 <!-- Current Studies -->
-                <div class="bg-white rounded-2xl p-6 card-hover border border-gray-200 fade-in">
-                    <div class="flex items-start gap-4">
-                        <div class="text-2xl">🎓</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">Licence en Télécommunications</h3>
+                <div class="bg-white rounded-2xl p-8 card-hover border border-gray-200 fade-in">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-[#93B381] to-[#FFB7CE] flex items-center justify-center">
+                                <span class="text-2xl text-white">🎓</span>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Licence en Télécommunications</h3>
                             <p class="text-lg text-gray-600 mb-1">Institut Supérieur de l'Informatique et des Technologies de Communication, Hammam Sousse</p>
-                            <p class="text-gray-500">2023 - 2026</p>
+                            <p class="text-gray-500 font-medium">2023 - 2026</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Baccalaureate -->
-                <div class="bg-white rounded-2xl p-6 card-hover border border-gray-200 fade-in">
-                    <div class="flex items-start gap-4">
-                        <div class="text-2xl">📚</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">Baccalauréat en Sciences Techniques</h3>
+                <div class="bg-white rounded-2xl p-8 card-hover border border-gray-200 fade-in">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-[#FFB7CE] to-[#93B381] flex items-center justify-center">
+                                <span class="text-2xl text-white">📚</span>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Baccalauréat en Sciences Techniques</h3>
                             <p class="text-lg text-gray-600 mb-1">Lycée Othman Chatty, M'saken</p>
-                            <p class="text-gray-500">2022 - 2023</p>
+                            <p class="text-gray-500 font-medium">2022 - 2023</p>
                         </div>
                     </div>
                 </div>
@@ -226,96 +260,150 @@
         </div>
     </section>
 
+    <!-- Experience Section -->
+    <section id="experience" class="section-padding bg-white mobile-padding">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">Expériences Professionnelles</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Stage Leoni -->
+                <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 card-hover border border-gray-200 fade-in">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#93B381] to-[#FFB7CE] flex items-center justify-center">
+                            <span class="text-xl text-white">💼</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">Stage d'été chez Leoni</h3>
+                            <p class="text-[#93B381] font-semibold">Développement d'une application web administrative</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        J'ai participé au développement complet d'une application web pour la gestion du personnel, incluant les modules utilisateurs, postes, hiérarchie, matrice et jours fériés, en prenant en charge les données, le backend et les interfaces React.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-3 py-1 rounded-full text-sm font-medium">React</span>
+                        <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-3 py-1 rounded-full text-sm font-medium">Backend</span>
+                        <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-3 py-1 rounded-full text-sm font-medium">Gestion de Données</span>
+                        <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-3 py-1 rounded-full text-sm font-medium">Application Web</span>
+                    </div>
+                </div>
+
+                <!-- Club Securinets -->
+                <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 card-hover border border-gray-200 fade-in">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#FFB7CE] to-[#93B381] flex items-center justify-center">
+                            <span class="text-xl text-white">👥</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">Trésorière et membre actif</h3>
+                            <p class="text-[#93B381] font-semibold">Club Securinets</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        J'ai été trésorière du club Securinets, où j'ai géré les finances et aidé à organiser ateliers, conférences et projets, tout en développant mes compétences en organisation, cybersécurité et travail en équipe.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-[#FFB7CE] bg-opacity-10 text-[#FF69B4] px-3 py-1 rounded-full text-sm font-medium">Gestion Financière</span>
+                        <span class="bg-[#FFB7CE] bg-opacity-10 text-[#FF69B4] px-3 py-1 rounded-full text-sm font-medium">Organisation d'Événements</span>
+                        <span class="bg-[#FFB7CE] bg-opacity-10 text-[#FF69B4] px-3 py-1 rounded-full text-sm font-medium">Cybersécurité</span>
+                        <span class="bg-[#FFB7CE] bg-opacity-10 text-[#FF69B4] px-3 py-1 rounded-full text-sm font-medium">Travail d'Équipe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Skills Section -->
-    <section id="competences" class="section-padding bg-white mobile-padding">
+    <section id="competences" class="section-padding bg-gray-50 mobile-padding">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">Compétences</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Technical Skills -->
-                <div class="bg-gray-50 rounded-2xl p-6 card-hover border border-gray-200 fade-in">
-                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                        <span>💻</span> Compétences Techniques
+                <div class="bg-white rounded-2xl p-8 card-hover border border-gray-200 fade-in">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#93B381] to-[#FFB7CE] flex items-center justify-center">
+                            <span class="text-white">💻</span>
+                        </div>
+                        Compétences Techniques
                     </h3>
-                    <div class="space-y-4">
+                    <div class="space-y-6">
                         <div>
-                            <h4 class="font-semibold text-gray-700 mb-2">Développement Web</h4>
+                            <h4 class="font-semibold text-gray-700 mb-3 text-lg">Développement Web</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">HTML</span>
-                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">CSS</span>
-                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">JavaScript</span>
-                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">React.js</span>
-                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">PHP</span>
-                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">MySQL</span>
+                                <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-4 py-2 rounded-full text-sm font-medium border border-[#93B381] border-opacity-20">HTML5</span>
+                                <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-4 py-2 rounded-full text-sm font-medium border border-[#93B381] border-opacity-20">CSS3</span>
+                                <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-4 py-2 rounded-full text-sm font-medium border border-[#93B381] border-opacity-20">JavaScript</span>
+                                <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-4 py-2 rounded-full text-sm font-medium border border-[#93B381] border-opacity-20">React.js</span>
+                                <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-4 py-2 rounded-full text-sm font-medium border border-[#93B381] border-opacity-20">PHP</span>
+                                <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-4 py-2 rounded-full text-sm font-medium border border-[#93B381] border-opacity-20">MySQL</span>
                             </div>
                         </div>
                         <div>
-                            <h4 class="font-semibold text-gray-700 mb-2">Cybersécurité & Réseaux</h4>
+                            <h4 class="font-semibold text-gray-700 mb-3 text-lg">Cybersécurité & Réseaux</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="bg-[#FFB7CE] bg-opacity-20 text-[#FF69B4] px-3 py-1 rounded-full text-sm">Sécurité des Systèmes</span>
-                                <span class="bg-[#FFB7CE] bg-opacity-20 text-[#FF69B4] px-3 py-1 rounded-full text-sm">Modèle OSI</span>
-                                <span class="bg-[#FFB7CE] bg-opacity-20 text-[#FF69B4] px-3 py-1 rounded-full text-sm">TCP/IP</span>
-                                <span class="bg-[#FFB7CE] bg-opacity-20 text-[#FF69B4] px-3 py-1 rounded-full text-sm">Routage</span>
-                                <span class="bg-[#FFB7CE] bg-opacity-20 text-[#FF69B4] px-3 py-1 rounded-full text-sm">Gestion des Menaces</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-700 mb-2">Outils</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">Word</span>
-                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">PowerPoint</span>
-                                <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">Cisco Networking</span>
+                                <span class="bg-[#FFB7CE] bg-opacity-10 text-[#FF69B4] px-4 py-2 rounded-full text-sm font-medium border border-[#FFB7CE] border-opacity-20">Sécurité des Systèmes</span>
+                                <span class="bg-[#FFB7CE] bg-opacity-10 text-[#FF69B4] px-4 py-2 rounded-full text-sm font-medium border border-[#FFB7CE] border-opacity-20">Modèle OSI</span>
+                                <span class="bg-[#FFB7CE] bg-opacity-10 text-[#FF69B4] px-4 py-2 rounded-full text-sm font-medium border border-[#FFB7CE] border-opacity-20">TCP/IP</span>
+                                <span class="bg-[#FFB7CE] bg-opacity-10 text-[#FF69B4] px-4 py-2 rounded-full text-sm font-medium border border-[#FFB7CE] border-opacity-20">Routage</span>
+                                <span class="bg-[#FFB7CE] bg-opacity-10 text-[#FF69B4] px-4 py-2 rounded-full text-sm font-medium border border-[#FFB7CE] border-opacity-20">Gestion des Menaces</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Personal Skills -->
-                <div class="bg-gray-50 rounded-2xl p-6 card-hover border border-gray-200 fade-in">
-                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                        <span>🌟</span> Compétences Personnelles
+                <div class="bg-white rounded-2xl p-8 card-hover border border-gray-200 fade-in">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#FFB7CE] to-[#93B381] flex items-center justify-center">
+                            <span class="text-white">🌟</span>
+                        </div>
+                        Compétences Personnelles
                     </h3>
-                    <div class="space-y-4">
-                        <div class="grid grid-cols-1 gap-3">
-                            <div class="flex items-center gap-3">
-                                <span class="text-[#93B381]">•</span>
-                                <span class="text-gray-700">Curieuse et motivée</span>
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="flex items-center gap-4 p-3 rounded-lg bg-gray-50">
+                                <div class="w-10 h-10 rounded-lg bg-[#93B381] bg-opacity-10 flex items-center justify-center">
+                                    <span class="text-[#93B381]">🔍</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Curieuse et motivée</h4>
+                                    <p class="text-gray-600 text-sm">En quête constante d'apprentissage</p>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-3">
-                                <span class="text-[#93B381]">•</span>
-                                <span class="text-gray-700">Autonome</span>
+                            <div class="flex items-center gap-4 p-3 rounded-lg bg-gray-50">
+                                <div class="w-10 h-10 rounded-lg bg-[#93B381] bg-opacity-10 flex items-center justify-center">
+                                    <span class="text-[#93B381]">⚡</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Autonome</h4>
+                                    <p class="text-gray-600 text-sm">Gère mon travail de manière indépendante</p>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-3">
-                                <span class="text-[#93B381]">•</span>
-                                <span class="text-gray-700">Rigueur</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="text-[#93B381]">•</span>
-                                <span class="text-gray-700">Gestion du stress</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="text-[#93B381]">•</span>
-                                <span class="text-gray-700">Empathie</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="text-[#93B381]">•</span>
-                                <span class="text-gray-700">Ouverture d'esprit</span>
+                            <div class="flex items-center gap-4 p-3 rounded-lg bg-gray-50">
+                                <div class="w-10 h-10 rounded-lg bg-[#93B381] bg-opacity-10 flex items-center justify-center">
+                                    <span class="text-[#93B381]">🎯</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Rigueur</h4>
+                                    <p class="text-gray-600 text-sm">Soigne le travail et les détails</p>
+                                </div>
                             </div>
                         </div>
                         <div>
-                            <h4 class="font-semibold text-gray-700 mb-2">Langues</h4>
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-gray-600">Arabe</span>
-                                    <span class="text-sm text-gray-500">Langue maternelle</span>
+                            <h4 class="font-semibold text-gray-700 mb-3 text-lg">Langues</h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center p-3 rounded-lg bg-gray-50">
+                                    <span class="text-gray-700 font-medium">Arabe</span>
+                                    <span class="text-sm text-[#93B381] font-semibold">Langue maternelle</span>
                                 </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-gray-600">Français</span>
-                                    <span class="text-sm text-gray-500">Courant</span>
+                                <div class="flex justify-between items-center p-3 rounded-lg bg-gray-50">
+                                    <span class="text-gray-700 font-medium">Français</span>
+                                    <span class="text-sm text-[#93B381] font-semibold">Courant</span>
                                 </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-gray-600">Anglais</span>
-                                    <span class="text-sm text-gray-500">Intermédiaire</span>
+                                <div class="flex justify-between items-center p-3 rounded-lg bg-gray-50">
+                                    <span class="text-gray-700 font-medium">Anglais</span>
+                                    <span class="text-sm text-[#93B381] font-semibold">Intermédiaire</span>
                                 </div>
                             </div>
                         </div>
@@ -326,61 +414,42 @@
     </section>
 
     <!-- Certifications Section -->
-    <section id="certifications" class="section-padding bg-gray-50 mobile-padding">
+    <section id="certifications" class="section-padding bg-white mobile-padding">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">Certifications</h2>
             
             <div class="certification-grid">
                 <!-- Certification 1 - Cyber Threat Management -->
                 <div class="certification-card fade-in">
-                    <div class="bg-gradient-to-r from-[#93B381] to-[#FFB7CE] h-48 flex items-center justify-center">
-                        <span class="text-white text-4xl">🛡️</span>
+                    <div class="bg-gradient-to-br from-[#93B381] to-[#FFB7CE] h-48 flex items-center justify-center">
+                        <div class="text-center">
+                            <span class="text-6xl text-white mb-4">🛡️</span>
+                            <h3 class="text-white text-xl font-bold">Cyber Threat Management</h3>
+                        </div>
                     </div>
                     <div class="certification-content">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Cyber Threat Management</h3>
-                        <p class="text-gray-600 mb-2">Cisco Networking Academy - RSI</p>
-                        <p class="text-gray-500 text-sm">26 Janvier 2025</p>
-                        <p class="text-gray-700 mt-3">Formation axée sur la gestion des menaces et la cybersécurité, couvrant les techniques de protection des systèmes.</p>
+                        <p class="text-gray-600 mb-2 font-medium">Cisco Networking Academy - RSI</p>
+                        <p class="text-gray-500 text-sm mb-4">26 Janvier 2025</p>
+                        <p class="text-gray-700 leading-relaxed">
+                            Formation axée sur la gestion des menaces et la cybersécurité, couvrant les techniques avancées de protection des systèmes et la prévention des attaques.
+                        </p>
                     </div>
                 </div>
 
                 <!-- Certification 2 - JavaScript Essentials -->
                 <div class="certification-card fade-in">
-                    <div class="bg-gradient-to-r from-[#FFB7CE] to-[#93B381] h-48 flex items-center justify-center">
-                        <span class="text-white text-4xl">⚡</span>
+                    <div class="bg-gradient-to-br from-[#FFB7CE] to-[#93B381] h-48 flex items-center justify-center">
+                        <div class="text-center">
+                            <span class="text-6xl text-white mb-4">⚡</span>
+                            <h3 class="text-white text-xl font-bold">JavaScript Essentials 1</h3>
+                        </div>
                     </div>
                     <div class="certification-content">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">JavaScript Essentials 1</h3>
-                        <p class="text-gray-600 mb-2">Cisco Networking Academy</p>
-                        <p class="text-gray-500 text-sm">26 Janvier 2025</p>
-                        <p class="text-gray-700 mt-3">Certification des fondamentaux du langage JavaScript pour le développement web interactif.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Associatif Section -->
-    <section id="associatif" class="section-padding bg-white mobile-padding">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center gradient-text fade-in">Engagement Associatif</h2>
-            
-            <div class="bg-gray-50 rounded-2xl p-8 card-hover border border-gray-200 fade-in">
-                <div class="flex items-start gap-6">
-                    <div class="text-3xl">👥</div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Securinets – Trésorière et membre actif</h3>
-                        <p class="text-gray-600 mb-4">Depuis 2023</p>
-                        <div class="space-y-4">
-                            <div class="bg-white rounded-xl p-4 border border-gray-200">
-                                <h4 class="font-bold text-lg text-gray-800 mb-2">Responsabilités et réalisations :</h4>
-                                <ul class="text-gray-600 space-y-2">
-                                    <li>• Gestion des finances et organisation d'événements liés à la cybersécurité</li>
-                                    <li>• Participation à des formations en cybersécurité pour développer mes compétences pratiques</li>
-                                    <li>• Collaboration avec le bureau pour promouvoir la sécurité informatique au sein du club</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <p class="text-gray-600 mb-2 font-medium">Cisco Networking Academy</p>
+                        <p class="text-gray-500 text-sm mb-4">26 Janvier 2025</p>
+                        <p class="text-gray-700 leading-relaxed">
+                            Certification des fondamentaux du langage JavaScript pour le développement web interactif, incluant les concepts de base et les bonnes pratiques.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -394,48 +463,65 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Contact Info -->
-                <div class="bg-white rounded-2xl p-6 card-hover border border-gray-200 fade-in">
-                    <h3 class="text-xl font-bold text-gray-800 mb-6">Coordonnées</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-3">
-                            <span class="text-xl">📍</span>
-                            <span class="text-gray-600">M'saken Sousse, rue El Bohtouri 4070</span>
+                <div class="bg-white rounded-2xl p-8 card-hover border border-gray-200 fade-in">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Coordonnées</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-gray-50">
+                            <div class="w-12 h-12 rounded-lg bg-[#93B381] bg-opacity-10 flex items-center justify-center">
+                                <span class="text-[#93B381] text-xl">📍</span>
+                            </div>
+                            <div>
+                                <p class="text-gray-600 text-sm">Adresse</p>
+                                <p class="text-gray-800 font-medium">M'saken Sousse, rue El Bohtouri 4070</p>
+                            </div>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <span class="text-xl">📞</span>
-                            <span class="text-gray-600">53 098 851</span>
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-gray-50">
+                            <div class="w-12 h-12 rounded-lg bg-[#93B381] bg-opacity-10 flex items-center justify-center">
+                                <span class="text-[#93B381] text-xl">📞</span>
+                            </div>
+                            <div>
+                                <p class="text-gray-600 text-sm">Téléphone</p>
+                                <p class="text-gray-800 font-medium">53 098 851</p>
+                            </div>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <span class="text-xl">📧</span>
-                            <a href="mailto:asmaelbach2@gmail.com" class="text-gray-600 hover:text-[#93B381] transition-colors">
-                                asmaelbach2@gmail.com
-                            </a>
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-gray-50">
+                            <div class="w-12 h-12 rounded-lg bg-[#93B381] bg-opacity-10 flex items-center justify-center">
+                                <span class="text-[#93B381] text-xl">📧</span>
+                            </div>
+                            <div>
+                                <p class="text-gray-600 text-sm">Email</p>
+                                <a href="mailto:asmaelbach2@gmail.com" class="text-gray-800 font-medium hover:text-[#93B381] transition-colors">
+                                    asmaelbach2@gmail.com
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- About Me -->
-                <div class="bg-white rounded-2xl p-6 card-hover border border-gray-200 fade-in">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Objectif Professionnel</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
+                <!-- Professional Summary -->
+                <div class="bg-white rounded-2xl p-8 card-hover border border-gray-200 fade-in">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Objectif Professionnel</h3>
+                    <p class="text-gray-700 leading-relaxed mb-6 text-lg">
                         Je recherche des opportunités pour appliquer mes compétences en cybersécurité et développement web, 
-                        participer à des projets innovants et continuer à développer mes connaissances dans un environnement professionnel.
+                        participer à des projets innovants et continuer à développer mes connaissances dans un environnement professionnel stimulant.
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">Cybersécurité</span>
-                        <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">Développement Web</span>
-                        <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">Réseaux</span>
-                        <span class="bg-[#93B381] bg-opacity-20 text-[#93B381] px-3 py-1 rounded-full text-sm">Apprentissage</span>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-4 py-3 rounded-xl text-sm font-medium border border-[#93B381] border-opacity-20">Cybersécurité</span>
+                        <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-4 py-3 rounded-xl text-sm font-medium border border-[#93B381] border-opacity-20">Développement Full-Stack</span>
+                        <span class="bg-[#93B381] bg-opacity-10 text-[#93B381] px-4 py-3 rounded-xl text-sm font-medium border border-[#93B381] border-opacity-20">Innovation Technologique</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-800 text-white py-8 mobile-padding">
+    <footer class="bg-gray-800 text-white py-12 mobile-padding">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-            <p class="text-gray-400 text-lg">© 2025 Asma Elbach - Étudiante en Télécommunications</p>
-            <p class="text-gray-500 text-sm mt-2">Passionnée par la cybersécurité et le développement web</p>
+            <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#93B381] to-[#FFB7CE] flex items-center justify-center">
+                <span class="text-2xl text-white">🌟</span>
+            </div>
+            <p class="text-gray-300 text-lg mb-2">© 2025 Asma Elbach - Étudiante en Télécommunications</p>
+            <p class="text-gray-400 text-sm">Passionnée par la cybersécurité et le développement d'applications innovantes</p>
         </div>
     </footer>
 
